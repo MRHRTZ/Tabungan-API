@@ -102,9 +102,7 @@ This using FastAPI you can directly access the docs at [SwaggerUI](http://localh
 ### Payload
 ```json
 {
-  "nama": "string",
-  "nik": "string",
-  "no_hp": "string"
+  "no_rekening": "string",
 }
 ```
 ### Response
