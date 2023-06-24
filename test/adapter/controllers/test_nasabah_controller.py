@@ -1,5 +1,5 @@
 import unittest
-from app.core.entity.nasabah import CreateNasabah
+from app.core.entities.nasabah import CreateNasabah
 from app.adapters.controllers.nasabah_controller import NasabahController
 
 class TestUserController(unittest.TestCase):
