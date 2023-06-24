@@ -63,7 +63,7 @@ async def Save_Money(request: SaveMoney):
         else:
             generateLog(LogLevel.WARNING, "Failed Response", response['remark'], response)
     except Exception as e:
-        response = setError("(99) Gagal menambah tabungan!")
+        response = setError("(99) Gagal menambah saldo tabungan!")
     # --
 
     return response
@@ -116,7 +116,7 @@ async def Mutation(request: Mutation):
         else:
             generateLog(LogLevel.WARNING, "Failed Response", response['remark'], response)
     except Exception as e:
-        response = setError("(99) Gagal menarik saldo!")
+        response = setError("(99) Gagal mengambil data mutasi!")
     # --
 
     return response
