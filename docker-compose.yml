@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+  db:
+      env_file:
+        - .env
+      build: 
+        context: ./db
+        dockerfile: Dockerfile
+      container_name: db
+      restart: unless-stopped
+      ports:
+        - "${DB_PORT}"
+      volumes: 
+      # - ./db:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      networks:
+        static-network:
+          ipv4_address: ${DB_IP}
+  api:
+      env_file:
+        - .env
+      build: 
+        context: .
+        dockerfile: ./app/Dockerfile
+      container_name: api
+      restart: unless-stopped
+      environment:
+        - VIRTUAL_HOST=restapi
+        - WATCHFILES_FORCE_POLLING=true
+      ports:
+        - "${API_PORT}"
+      volumes: ['./app:/restapi/app']
+      networks:
+        static-network:
+          ipv4_address: ${API_IP}
+networks:
+  static-network:
+      ipam:
+        config:
+          - subnet: ${DEFAULT_GATEWAY}
+  default:
+      name: ${NETWORK_NAME}

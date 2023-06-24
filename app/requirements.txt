@@ -1,0 +1,11 @@
+# RestAPI Service
+requests==2.28.2
+sqlalchemy==2.0.16
+psycopg2==2.9.6
+pydantic==1.10.7
+fastapi==0.98.0
+pytz==2023.3
+# Core Service
+python-dotenv==1.0.0
+structlog==22.3.0
+uvicorn[standard]==0.22.0
